@@ -20,13 +20,13 @@ const screens = [
     icon: Users,
     title: "Contact & Lead Management",
     description: "Comprehensive contact database with lead scoring, tags, and conversation history.",
-    poster: "/dashboard.png",
+    video: "/contact.mp4",
   },
   {
     icon: Workflow,
     title: "Automation Builder",
     description: "Visual workflow builder to create complex automation sequences without code.",
-    video: "/automation.mp4",
+    video: "/tele.mp4",
     poster: "/automation-poster.png",
   },
   {
@@ -40,7 +40,7 @@ const screens = [
     icon: BarChart3,
     title: "Analytics Dashboard",
     description: "Real-time insights into team performance, response times, and customer satisfaction.",
-    video: "/analytics.mp4",
+    video: "/dashboardvid.mp4",
     poster: "/analytics-poster.png",
   },
   {
