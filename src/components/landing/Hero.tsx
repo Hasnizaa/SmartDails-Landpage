@@ -1,24 +1,56 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Play, Zap, MessageSquare, Clock } from "lucide-react";
+import {
+  Play,
+  Zap,
+  MessageSquare,
+  Clock,
+  ChevronLeft,
+  ChevronRight
+} from "lucide-react";
+import { useEffect } from "react";
 
 const Hero = () => {
+
+  useEffect(() => {
+    const container = document.getElementById("video-carousel");
+    const leftBtn = document.getElementById("slide-left");
+    const rightBtn = document.getElementById("slide-right");
+
+    let autoSlide: any;
+
+    const startAuto = () => {
+      autoSlide = setInterval(() => {
+        container?.scrollBy({ left: 350, behavior: "smooth" });
+      }, 3500);
+    };
+
+    const stopAuto = () => clearInterval(autoSlide);
+
+    startAuto();
+
+    container?.addEventListener("mouseenter", stopAuto);
+    container?.addEventListener("mouseleave", startAuto);
+
+    leftBtn?.addEventListener("click", () => {
+      container?.scrollBy({ left: -350, behavior: "smooth" });
+    });
+
+    rightBtn?.addEventListener("click", () => {
+      container?.scrollBy({ left: 350, behavior: "smooth" });
+    });
+
+    return () => clearInterval(autoSlide);
+  }, []);
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
       {/* Background Effects */}
       <div className="absolute inset-0 bg-gradient-hero" />
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-gradient-glow opacity-60" />
-      <div className="absolute top-1/3 right-0 w-[400px] h-[400px] bg-primary/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-primary/10 rounded-full blur-3xl" />
-      
-      {/* Grid Pattern */}
-      <div className="absolute inset-0 opacity-[0.02]" style={{
-        backgroundImage: `linear-gradient(hsl(var(--foreground)) 1px, transparent 1px),
-                          linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)`,
-        backgroundSize: '50px 50px'
-      }} />
 
       <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-4xl mx-auto text-center">
+        <div className="max-w-5xl mx-auto text-center">
+
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-8 animate-fade-up">
             <Zap className="w-4 h-4 text-primary" />
@@ -27,104 +59,155 @@ const Hero = () => {
             </span>
           </div>
 
-          {/* Main Heading */}
-          <h1 className="font-heading text-4xl md:text-6xl lg:text-7xl font-bold mb-6 animate-fade-up" style={{ animationDelay: '0.1s' }}>
-            Automate Your{" "}
-            <span className="text-gradient">Customer Support</span>{" "}
-            Across Every Channel
+          {/* Heading */}
+          <h1 className="font-heading text-4xl md:text-6xl lg:text-7xl font-bold mb-6 animate-fade-up"
+              style={{ animationDelay: "0.1s" }}>
+            Automate Your Customer Support with{" "}
+            <span className="text-gradient">SmartDials AI</span>
           </h1>
 
           {/* Subheading */}
-          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-8 animate-fade-up" style={{ animationDelay: '0.2s' }}>
-            AI that handles thousands of conversations on WhatsApp, Messenger, Email, 
-            Instagram & Web Chat. Reduce costs by 60% with 24/7 intelligent automation.
+          <p
+            className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-8 animate-fade-up"
+            style={{ animationDelay: "0.2s" }}
+          >
+            Connect instantly across WhatsApp, Telegram, Messenger, and Web Chat
+            using real-time AI automation.
           </p>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12 animate-fade-up" style={{ animationDelay: '0.3s' }}>
-            <a href="#pricing">
+          {/* CTA */}
+          <div
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12 animate-fade-up"
+            style={{ animationDelay: "0.3s" }}
+          >
+            <a href="#demo">
               <Button variant="hero" size="xl">
-                Start Free Trial
-                <ArrowRight className="w-5 h-5" />
+                Try Live Demo <Play className="w-5 h-5 ml-2" />
               </Button>
             </a>
-            <a href="https://wa.me/message" target="_blank" rel="noopener noreferrer">
+
+            <a
+              href="https://t.me/SmartDialsBot"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <Button variant="glass" size="xl">
-                <Play className="w-5 h-5" />
-                Watch Demo
+                <MessageSquare className="w-5 h-5" />
+                Chat on Telegram
               </Button>
             </a>
           </div>
 
           {/* Stats */}
-          <div className="grid grid-cols-3 gap-4 md:gap-8 max-w-2xl mx-auto mb-12 animate-fade-up" style={{ animationDelay: '0.4s' }}>
+          <div
+            className="grid grid-cols-3 gap-4 md:gap-8 max-w-2xl mx-auto mb-16 animate-fade-up"
+            style={{ animationDelay: "0.4s" }}
+          >
             <div className="glass rounded-xl p-4 md:p-6">
-              <div className="flex items-center justify-center gap-2 mb-2">
-                <Clock className="w-5 h-5 text-primary" />
+              <Clock className="w-5 h-5 text-primary mx-auto mb-2" />
+              <div className="text-2xl md:text-3xl font-bold">&lt; 1 min</div>
+              <div className="text-sm text-muted-foreground">
+                Avg. Response Time
               </div>
-              <div className="text-2xl md:text-3xl font-bold text-foreground">
-                &lt;1 min
-              </div>
-              <div className="text-sm text-muted-foreground">Response Time</div>
             </div>
+
             <div className="glass rounded-xl p-4 md:p-6">
-              <div className="flex items-center justify-center gap-2 mb-2">
-                <Zap className="w-5 h-5 text-primary" />
+              <Zap className="w-5 h-5 text-primary mx-auto mb-2" />
+              <div className="text-2xl md:text-3xl font-bold">60%</div>
+              <div className="text-sm text-muted-foreground">
+                Operational Savings
               </div>
-              <div className="text-2xl md:text-3xl font-bold text-foreground">60%</div>
-              <div className="text-sm text-muted-foreground">Cost Reduction</div>
             </div>
+
             <div className="glass rounded-xl p-4 md:p-6">
-              <div className="flex items-center justify-center gap-2 mb-2">
-                <MessageSquare className="w-5 h-5 text-primary" />
-              </div>
-              <div className="text-2xl md:text-3xl font-bold text-foreground">24/7</div>
-              <div className="text-sm text-muted-foreground">Availability</div>
+              <MessageSquare className="w-5 h-5 text-primary mx-auto mb-2" />
+              <div className="text-2xl md:text-3xl font-bold">24/7</div>
+              <div className="text-sm text-muted-foreground">AI Support</div>
             </div>
           </div>
 
-          {/* Video Mockup Placeholder */}
-          <div className="max-w-4xl mx-auto animate-fade-up" style={{ animationDelay: '0.5s' }}>
+          {/* Horizontal Mockup Slider */}
+          <div className="relative w-full max-w-5xl mx-auto">
+
+            {/* Left button */}
+            <button
+              id="slide-left"
+              className="absolute left-0 top-1/2 -translate-y-1/2 bg-background/70 p-3 rounded-full shadow-lg z-20 hover:bg-background transition"
+            >
+              <ChevronLeft className="w-6 h-6" />
+            </button>
+
+            {/* Right button */}
+            <button
+              id="slide-right"
+              className="absolute right-0 top-1/2 -translate-y-1/2 bg-background/70 p-3 rounded-full shadow-lg z-20 hover:bg-background transition"
+            >
+              <ChevronRight className="w-6 h-6" />
+            </button>
+
+            {/* Slider */}
+            <div
+              id="video-carousel"
+              className="flex overflow-x-auto no-scrollbar gap-6 px-12 scroll-smooth"
+            >
+              {[1, 2, 3].map((i) => (
+                <div
+                  key={i}
+                  className="min-w-[420px] rounded-2xl overflow-hidden glass border border-border/50 shadow-glow shrink-0"
+                >
+                  <div className="flex items-center gap-2 px-4 py-3 bg-muted/30 border-b border-border/50">
+                    <div className="flex gap-1.5">
+                      <div className="w-3 h-3 rounded-full bg-destructive/60" />
+                      <div className="w-3 h-3 rounded-full bg-yellow-500/60" />
+                      <div className="w-3 h-3 rounded-full bg-green-500/60" />
+                    </div>
+                    <div className="flex-1 text-center text-xs text-muted-foreground">
+                      mockup-scene-{i}
+                    </div>
+                  </div>
+
+                  <div className="aspect-video bg-muted/30 flex items-center justify-center">
+                    <div className="text-center">
+                      <div className="w-20 h-20 rounded-full glass flex items-center justify-center mx-auto mb-4">
+                        <Play className="w-8 h-8 text-primary" />
+                      </div>
+                      <p className="text-muted-foreground text-sm">
+                        Mockup Scene {i} (Replace With Link)
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+          </div>
+
+          {/* Demo Video */}
+          <div id="demo" className="max-w-4xl mx-auto mt-20 animate-fade-up">
             <div className="relative rounded-2xl overflow-hidden glass border border-border/50 shadow-glow">
-              {/* Browser Chrome */}
+
+              {/* Browser UI */}
               <div className="flex items-center gap-2 px-4 py-3 bg-muted/30 border-b border-border/50">
                 <div className="flex gap-1.5">
                   <div className="w-3 h-3 rounded-full bg-destructive/60" />
                   <div className="w-3 h-3 rounded-full bg-yellow-500/60" />
                   <div className="w-3 h-3 rounded-full bg-green-500/60" />
                 </div>
-                <div className="flex-1 mx-4">
-                  <div className="bg-background/50 rounded-md px-3 py-1 text-xs text-muted-foreground text-center">
-                    smartdials-dashboard.onrender.com
-                  </div>
+                <div className="flex-1 text-center text-xs text-muted-foreground">
+                  demo.smartdials.ai
                 </div>
               </div>
-              
-              {/* Video Placeholder Box */}
-              <div className="aspect-video bg-gradient-to-br from-muted/20 to-muted/40 flex items-center justify-center relative">
-                <div className="absolute inset-0 bg-gradient-radial from-primary/5 to-transparent" />
-                <div className="text-center z-10">
-                  <div className="w-20 h-20 rounded-full glass flex items-center justify-center mx-auto mb-4 cursor-pointer hover:scale-110 transition-transform group">
-                    <Play className="w-8 h-8 text-primary group-hover:text-primary-foreground transition-colors ml-1" />
-                  </div>
-                  <p className="text-muted-foreground text-sm">Click to play demo video</p>
-                  <p className="text-muted-foreground/60 text-xs mt-1">Replace with your video embed</p>
-                </div>
-                
-                {/* Decorative Elements */}
-                <div className="absolute top-4 left-4 w-24 h-16 rounded-lg bg-primary/10 animate-pulse" />
-                <div className="absolute top-4 right-4 w-32 h-8 rounded-lg bg-primary/10 animate-pulse" style={{ animationDelay: '0.5s' }} />
-                <div className="absolute bottom-4 left-4 right-4 h-12 rounded-lg bg-primary/5" />
+
+              {/* Video */}
+              <div className="aspect-video bg-black flex items-center justify-center">
+                <video className="w-full h-full" controls>
+                  <source src="/videos/telegram-demo.mp4" type="video/mp4" />
+                </video>
               </div>
+
             </div>
           </div>
-        </div>
-      </div>
 
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 rounded-full border-2 border-muted-foreground/30 flex items-start justify-center p-2">
-          <div className="w-1.5 h-2.5 rounded-full bg-primary animate-pulse" />
         </div>
       </div>
     </section>

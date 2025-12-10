@@ -4,7 +4,7 @@ import Channels from "@/components/landing/Channels";
 import Features from "@/components/landing/Features";
 import Benefits from "@/components/landing/Benefits";
 import FAQ from "@/components/landing/FAQ";
-import CTA from "@/components/landing/CTA";
+//import CTA from "@/components/landing/CTA";
 import Footer from "@/components/landing/Footer";
 
 const Index = () => {
@@ -16,7 +16,6 @@ const Index = () => {
       <Features />
       <Benefits />
       <FAQ />
-      <CTA />
       <Footer />
     </main>
   );
