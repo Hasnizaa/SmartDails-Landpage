@@ -18,6 +18,8 @@ const Navbar = () => {
   const navLinks = [
     { href: "#features", label: "Features" },
     { href: "#channels", label: "Channels" },
+    { href: "#benefits", label: "Why SmartDails" },
+    { href: "#bpo", label: "BPO Solution" },
     { href: "#faq", label: "FAQ" },
   ];
 
@@ -33,7 +35,7 @@ const Navbar = () => {
             <span className="text-primary-foreground font-bold text-lg">S</span>
           </div>
           <span className="font-heading text-xl font-bold text-foreground">
-            SmartDials
+            SmartDails
           </span>
         </a>
 

@@ -49,7 +49,7 @@ const Channels = () => {
           </h2>
           <p className="text-muted-foreground text-lg max-w-3xl mx-auto">
             Connect, automate, and engage customers across all major communication platforms. 
-            SmartDials unifies every channel into one AI-driven inbox that instantly identifies 
+            SmartDails unifies every channel into one AI-driven inbox that instantly identifies 
             customer intent, responds intelligently, and routes conversations to the right agent.
           </p>
         </div>

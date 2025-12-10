@@ -54,7 +54,7 @@ const BPOSection = () => {
               <span className="text-gradient">High-Volume Operations</span>
             </h2>
             <p className="text-muted-foreground text-lg mb-8">
-              SmartDials is engineered for BPO teams managing thousands of conversations 
+              SmartDails is engineered for BPO teams managing thousands of conversations 
               across multiple clients. Scale your operations with enterprise-grade tools 
               designed for maximum efficiency.
             </p>

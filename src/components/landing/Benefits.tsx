@@ -56,14 +56,14 @@ const Benefits = () => {
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-4">
             <Check className="w-4 h-4 text-primary" />
-            <span className="text-sm text-muted-foreground">Why SmartDials</span>
+            <span className="text-sm text-muted-foreground">Why SmartDails</span>
           </div>
           <h2 className="font-heading text-3xl md:text-5xl font-bold mb-4">
             Operational Value{" "}
             <span className="text-gradient">That Matters</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            BPO teams gain productivity, clarity, and control with SmartDials. 
+            BPO teams gain productivity, clarity, and control with SmartDails. 
             One platform to transform your customer operations.
           </p>
         </div>

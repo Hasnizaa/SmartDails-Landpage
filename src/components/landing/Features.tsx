@@ -66,7 +66,7 @@ const Features = () => {
             <span className="text-gradient">Active 24/7</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-3xl mx-auto">
-            SmartDials operates like your best agent — always on, always consistent. 
+            SmartDails operates like your best agent — always on, always consistent. 
             Automate repetitive tasks, boost agent productivity, and ensure intelligent 
             responses across every conversation.
           </p>

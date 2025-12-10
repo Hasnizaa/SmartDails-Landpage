@@ -4,7 +4,8 @@ import {
   Workflow, 
   Send, 
   BarChart3,
-  Monitor
+  Monitor,
+  Play
 } from "lucide-react";
 
 const screens = [
@@ -55,7 +56,7 @@ const ProductScreens = () => {
           </p>
         </div>
 
-        {/* Product Screen Mockups */}
+        {/* Product Screen Mockups with Video Placeholders */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {screens.map((screen, index) => (
             <div
@@ -77,15 +78,18 @@ const ProductScreens = () => {
                 </div>
               </div>
 
-              {/* Mockup Content Placeholder */}
-              <div className={`${index === 0 ? 'aspect-[2/1]' : 'aspect-video'} bg-gradient-to-br from-muted/50 to-muted/20 flex items-center justify-center p-6`}>
+              {/* Video Placeholder */}
+              <div className={`${index === 0 ? 'aspect-[2/1]' : 'aspect-video'} bg-gradient-to-br from-muted/50 to-muted/20 flex items-center justify-center p-6 cursor-pointer group`}>
                 <div className="text-center">
-                  <div className="w-16 h-16 rounded-2xl glass flex items-center justify-center mx-auto mb-4 border border-primary/30">
-                    <screen.icon className="w-8 h-8 text-primary" />
+                  <div className="w-16 h-16 rounded-full glass flex items-center justify-center mx-auto mb-4 border border-primary/30 group-hover:border-primary/60 group-hover:bg-primary/10 transition-all duration-300">
+                    <Play className="w-8 h-8 text-primary ml-1" />
                   </div>
                   <h3 className="font-semibold text-foreground mb-2">{screen.title}</h3>
                   <p className="text-muted-foreground text-sm max-w-xs mx-auto">
                     {screen.description}
+                  </p>
+                  <p className="text-muted-foreground/60 text-xs mt-3">
+                    Click to play demo video
                   </p>
                 </div>
               </div>
