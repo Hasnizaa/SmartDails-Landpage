@@ -1,56 +1,54 @@
 import { 
   Bot, 
-  TicketCheck, 
-  Workflow, 
-  UserCheck, 
   Brain, 
-  Languages, 
-  BarChart3, 
-  Clock,
+  Workflow, 
+  MessageSquare, 
+  TicketCheck, 
+  UserCheck, 
   Zap,
-  Shield
+  Clock
 } from "lucide-react";
 
 const features = [
   {
     icon: Bot,
     title: "AI Auto-Reply",
-    description: "Instant responses to FAQs, order tracking, and common inquiries 24/7.",
-  },
-  {
-    icon: TicketCheck,
-    title: "Smart Ticketing",
-    description: "Auto-assignment and routing to the right agents based on context.",
-  },
-  {
-    icon: Workflow,
-    title: "Workflow Automation",
-    description: "Automate approvals, routing, and follow-ups without manual intervention.",
-  },
-  {
-    icon: UserCheck,
-    title: "Lead Qualification",
-    description: "AI scores and qualifies leads, routing hot prospects to sales instantly.",
+    description: "Intelligent responses to FAQs, inquiries, and common requests 24/7 without human intervention.",
   },
   {
     icon: Brain,
-    title: "Sentiment Analysis",
-    description: "Detect customer emotions and escalate negative experiences immediately.",
+    title: "Intent Detection",
+    description: "AI understands customer intent from messages and takes appropriate action automatically.",
   },
   {
-    icon: Languages,
-    title: "Multilingual Support",
-    description: "Communicate in Malay, English, Chinese, Tamil, and more languages.",
+    icon: Workflow,
+    title: "Conversation Routing",
+    description: "Smart routing directs conversations to the right agent based on skills and availability.",
   },
   {
-    icon: BarChart3,
-    title: "Analytics Dashboard",
-    description: "Real-time insights into performance, response times, and customer satisfaction.",
+    icon: MessageSquare,
+    title: "Chat Summarization",
+    description: "AI generates summaries of long conversations for quick agent handoffs.",
+  },
+  {
+    icon: TicketCheck,
+    title: "Ticket Creation",
+    description: "Automatically create support tickets from conversations with full context attached.",
+  },
+  {
+    icon: UserCheck,
+    title: "Lead Follow-up",
+    description: "Automated follow-up sequences to nurture leads and increase conversions.",
+  },
+  {
+    icon: Zap,
+    title: "Event Triggers",
+    description: "Trigger workflows based on events like new messages, status changes, or keywords.",
   },
   {
     icon: Clock,
-    title: "24/7 Availability",
-    description: "Never miss a customer inquiry, even outside business hours.",
+    title: "24/7 Operation",
+    description: "Never miss a customer inquiry. AI works around the clock without breaks.",
   },
 ];
 
@@ -60,21 +58,22 @@ const Features = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-4">
-            <Zap className="w-4 h-4 text-primary" />
-            <span className="text-sm text-muted-foreground">Powerful Features</span>
+            <Bot className="w-4 h-4 text-primary" />
+            <span className="text-sm text-muted-foreground">AI Automation</span>
           </div>
           <h2 className="font-heading text-3xl md:text-5xl font-bold mb-4">
-            Everything You Need to{" "}
-            <span className="text-gradient">Scale Support</span>
+            Your Strongest Agent,{" "}
+            <span className="text-gradient">Active 24/7</span>
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            From automated responses to deep analytics, SmartDials provides 
-            enterprise-grade tools to transform your customer service.
+          <p className="text-muted-foreground text-lg max-w-3xl mx-auto">
+            SmartDials operates like your best agent — always on, always consistent. 
+            Automate repetitive tasks, boost agent productivity, and ensure intelligent 
+            responses across every conversation.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {features.map((feature, index) => (
+          {features.map((feature) => (
             <div
               key={feature.title}
               className="group glass rounded-2xl p-6 hover:border-primary/50 transition-all duration-300 hover:-translate-y-1"
@@ -90,38 +89,6 @@ const Features = () => {
               </p>
             </div>
           ))}
-        </div>
-
-        {/* Use Cases */}
-        <div className="mt-20 glass rounded-3xl p-8 md:p-12">
-          <div className="text-center mb-10">
-            <h3 className="font-heading text-2xl md:text-3xl font-bold mb-3">
-              Automation Scenarios
-            </h3>
-            <p className="text-muted-foreground">
-              See how SmartDials handles your everyday customer interactions
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-            {[
-              "Order Tracking",
-              "Quotation Requests",
-              "Lead Qualification",
-              "Customer Support",
-              "Appointment Booking",
-              "Post-Sales Follow-up",
-            ].map((scenario) => (
-              <div
-                key={scenario}
-                className="bg-secondary/50 rounded-xl px-4 py-3 text-center hover:bg-secondary transition-colors cursor-pointer"
-              >
-                <span className="text-sm font-medium text-foreground">
-                  {scenario}
-                </span>
-              </div>
-            ))}
-          </div>
         </div>
       </div>
     </section>

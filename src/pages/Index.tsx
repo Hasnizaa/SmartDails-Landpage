@@ -2,9 +2,10 @@ import Navbar from "@/components/landing/Navbar";
 import Hero from "@/components/landing/Hero";
 import Channels from "@/components/landing/Channels";
 import Features from "@/components/landing/Features";
+import ProductScreens from "@/components/landing/ProductScreens";
+import BPOSection from "@/components/landing/BPOSection";
 import Benefits from "@/components/landing/Benefits";
 import FAQ from "@/components/landing/FAQ";
-//import CTA from "@/components/landing/CTA";
 import Footer from "@/components/landing/Footer";
 
 const Index = () => {
@@ -14,6 +15,8 @@ const Index = () => {
       <Hero />
       <Channels />
       <Features />
+      <ProductScreens />
+      <BPOSection />
       <Benefits />
       <FAQ />
       <Footer />

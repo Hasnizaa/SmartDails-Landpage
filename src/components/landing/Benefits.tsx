@@ -1,77 +1,87 @@
-import { ArrowDown, ArrowUp, Check } from "lucide-react";
+import { 
+  TrendingDown, 
+  Clock, 
+  Zap, 
+  MessageSquare, 
+  Workflow, 
+  Plug,
+  Check
+} from "lucide-react";
 
-const comparisons = [
+const benefits = [
   {
-    traditional: "2+ hours response time",
-    ai: "Under 1 minute response",
-    improvement: "120x faster",
+    icon: TrendingDown,
+    title: "60% Cost Reduction",
+    description: "Reduce manpower costs significantly with AI handling routine tasks.",
+    highlight: "60%",
   },
   {
-    traditional: "High operational costs",
-    ai: "60% cost reduction",
-    improvement: "Major savings",
+    icon: Clock,
+    title: "24/7 AI Support",
+    description: "Never miss a customer inquiry with round-the-clock AI assistance.",
+    highlight: "24/7",
   },
   {
-    traditional: "Manual follow-ups",
-    ai: "Automated sequences",
-    improvement: "100% coverage",
+    icon: Zap,
+    title: "Faster Response Times",
+    description: "Respond to customers in seconds instead of hours with AI automation.",
+    highlight: "<1min",
   },
   {
-    traditional: "Inconsistent answers",
-    ai: "AI-trained responses",
-    improvement: "Perfect accuracy",
+    icon: MessageSquare,
+    title: "Centralized Communications",
+    description: "All channels unified in one dashboard for seamless management.",
+    highlight: "1 Inbox",
   },
   {
-    traditional: "Limited hours",
-    ai: "24/7 availability",
-    improvement: "Always on",
+    icon: Workflow,
+    title: "Automated Workflows",
+    description: "Eliminate manual tasks with intelligent automation sequences.",
+    highlight: "100%",
+  },
+  {
+    icon: Plug,
+    title: "Easy Integration",
+    description: "Connect with your existing CRM, POS, and business systems effortlessly.",
+    highlight: "Plug & Play",
   },
 ];
 
 const Benefits = () => {
   return (
-    <section className="py-24 relative overflow-hidden">
+    <section id="benefits" className="py-24 relative overflow-hidden">
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl" />
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-4">
+            <Check className="w-4 h-4 text-primary" />
+            <span className="text-sm text-muted-foreground">Why SmartDials</span>
+          </div>
           <h2 className="font-heading text-3xl md:text-5xl font-bold mb-4">
-            AI vs Traditional <span className="text-gradient">Workflows</span>
+            Operational Value{" "}
+            <span className="text-gradient">That Matters</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            See the dramatic improvement when you switch to AI-powered automation
+            BPO teams gain productivity, clarity, and control with SmartDials. 
+            One platform to transform your customer operations.
           </p>
         </div>
 
-        <div className="max-w-4xl mx-auto">
-          <div className="grid grid-cols-1 gap-4">
-            {comparisons.map((item, index) => (
-              <div
-                key={index}
-                className="glass rounded-2xl p-6 grid grid-cols-1 md:grid-cols-3 gap-4 items-center"
-              >
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-full bg-destructive/20 flex items-center justify-center flex-shrink-0">
-                    <ArrowDown className="w-4 h-4 text-destructive" />
-                  </div>
-                  <span className="text-muted-foreground">{item.traditional}</span>
-                </div>
-                
-                <div className="hidden md:flex justify-center">
-                  <div className="px-4 py-2 rounded-full bg-primary/20 text-primary text-sm font-semibold">
-                    {item.improvement}
-                  </div>
-                </div>
-                
-                <div className="flex items-center gap-3 md:justify-end">
-                  <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
-                    <ArrowUp className="w-4 h-4 text-primary" />
-                  </div>
-                  <span className="text-foreground font-medium">{item.ai}</span>
-                </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+          {benefits.map((benefit) => (
+            <div
+              key={benefit.title}
+              className="glass rounded-2xl p-6 hover:border-primary/50 transition-all duration-300 hover:-translate-y-1 text-center"
+            >
+              <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                <benefit.icon className="w-7 h-7 text-primary" />
               </div>
-            ))}
-          </div>
+              <div className="text-3xl font-bold text-primary mb-2">{benefit.highlight}</div>
+              <h3 className="font-semibold text-foreground mb-2">{benefit.title}</h3>
+              <p className="text-sm text-muted-foreground">{benefit.description}</p>
+            </div>
+          ))}
         </div>
 
         {/* Industries */}
@@ -80,7 +90,7 @@ const Benefits = () => {
             Trusted Across Industries
           </h3>
           <div className="flex flex-wrap justify-center gap-4">
-            {["E-Commerce", "Service Providers", "Agriculture", "Corporate", "SMEs", "Healthcare"].map(
+            {["E-Commerce", "BPO Services", "Healthcare", "Finance", "Retail", "Logistics"].map(
               (industry) => (
                 <div
                   key={industry}

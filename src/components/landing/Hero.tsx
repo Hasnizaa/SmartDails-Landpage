@@ -2,26 +2,45 @@ import { Button } from "@/components/ui/button";
 import {
   Play,
   Zap,
-  MessageSquare,
-  Clock,
+  Send,
   ChevronLeft,
-  ChevronRight
+  ChevronRight,
+  Inbox,
+  BarChart3,
+  Workflow,
+  MessageSquare
 } from "lucide-react";
 import { useEffect } from "react";
 
-const Hero = () => {
+const mockupScreens = [
+  { id: 1, title: "Unified Inbox", icon: Inbox },
+  { id: 2, title: "Automation Builder", icon: Workflow },
+  { id: 3, title: "Analytics Dashboard", icon: BarChart3 },
+  { id: 4, title: "Multi-Channel View", icon: MessageSquare },
+  { id: 5, title: "Campaign Manager", icon: Send },
+];
 
+const Hero = () => {
   useEffect(() => {
-    const container = document.getElementById("video-carousel");
+    const container = document.getElementById("mockup-carousel");
     const leftBtn = document.getElementById("slide-left");
     const rightBtn = document.getElementById("slide-right");
 
-    let autoSlide: any;
+    let autoSlide: ReturnType<typeof setInterval>;
+    let direction = 1;
 
     const startAuto = () => {
       autoSlide = setInterval(() => {
-        container?.scrollBy({ left: 350, behavior: "smooth" });
-      }, 3500);
+        if (container) {
+          const maxScroll = container.scrollWidth - container.clientWidth;
+          if (container.scrollLeft >= maxScroll - 10) {
+            direction = -1;
+          } else if (container.scrollLeft <= 10) {
+            direction = 1;
+          }
+          container.scrollBy({ left: direction * 350, behavior: "smooth" });
+        }
+      }, 3000);
     };
 
     const stopAuto = () => clearInterval(autoSlide);
@@ -55,34 +74,35 @@ const Hero = () => {
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-8 animate-fade-up">
             <Zap className="w-4 h-4 text-primary" />
             <span className="text-sm text-muted-foreground">
-              AI-Powered Customer Automation
+              AI-Powered BPO Automation Platform
             </span>
           </div>
 
           {/* Heading */}
           <h1 className="font-heading text-4xl md:text-6xl lg:text-7xl font-bold mb-6 animate-fade-up"
               style={{ animationDelay: "0.1s" }}>
-            Automate Your Customer Support with{" "}
+            Transform Customer Support with{" "}
             <span className="text-gradient">SmartDials AI</span>
           </h1>
 
           {/* Subheading */}
           <p
-            className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-8 animate-fade-up"
+            className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-8 animate-fade-up"
             style={{ animationDelay: "0.2s" }}
           >
-            Connect instantly across WhatsApp, Telegram, Messenger, and Web Chat
-            using real-time AI automation.
+            Designed for high-volume BPO teams, SmartDials centralizes all conversations 
+            into one intelligent dashboard. Automate interactions, reduce costs, and improve 
+            agent performance with seamless AI-driven workflows.
           </p>
 
           {/* CTA */}
           <div
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12 animate-fade-up"
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16 animate-fade-up"
             style={{ animationDelay: "0.3s" }}
           >
-            <a href="#demo">
+            <a href="#features">
               <Button variant="hero" size="xl">
-                Try Live Demo <Play className="w-5 h-5 ml-2" />
+                Get Started <Play className="w-5 h-5 ml-2" />
               </Button>
             </a>
 
@@ -92,42 +112,17 @@ const Hero = () => {
               rel="noopener noreferrer"
             >
               <Button variant="glass" size="xl">
-                <MessageSquare className="w-5 h-5" />
+                <Send className="w-5 h-5" />
                 Chat on Telegram
               </Button>
             </a>
           </div>
 
-          {/* Stats */}
-          <div
-            className="grid grid-cols-3 gap-4 md:gap-8 max-w-2xl mx-auto mb-16 animate-fade-up"
+          {/* Dynamic Mockup Slider */}
+          <div 
+            className="relative w-full max-w-6xl mx-auto animate-fade-up"
             style={{ animationDelay: "0.4s" }}
           >
-            <div className="glass rounded-xl p-4 md:p-6">
-              <Clock className="w-5 h-5 text-primary mx-auto mb-2" />
-              <div className="text-2xl md:text-3xl font-bold">&lt; 1 min</div>
-              <div className="text-sm text-muted-foreground">
-                Avg. Response Time
-              </div>
-            </div>
-
-            <div className="glass rounded-xl p-4 md:p-6">
-              <Zap className="w-5 h-5 text-primary mx-auto mb-2" />
-              <div className="text-2xl md:text-3xl font-bold">60%</div>
-              <div className="text-sm text-muted-foreground">
-                Operational Savings
-              </div>
-            </div>
-
-            <div className="glass rounded-xl p-4 md:p-6">
-              <MessageSquare className="w-5 h-5 text-primary mx-auto mb-2" />
-              <div className="text-2xl md:text-3xl font-bold">24/7</div>
-              <div className="text-sm text-muted-foreground">AI Support</div>
-            </div>
-          </div>
-
-          {/* Horizontal Mockup Slider */}
-          <div className="relative w-full max-w-5xl mx-auto">
 
             {/* Left button */}
             <button
@@ -147,32 +142,38 @@ const Hero = () => {
 
             {/* Slider */}
             <div
-              id="video-carousel"
+              id="mockup-carousel"
               className="flex overflow-x-auto no-scrollbar gap-6 px-12 scroll-smooth"
             >
-              {[1, 2, 3].map((i) => (
+              {mockupScreens.map((screen) => (
                 <div
-                  key={i}
-                  className="min-w-[420px] rounded-2xl overflow-hidden glass border border-border/50 shadow-glow shrink-0"
+                  key={screen.id}
+                  className="min-w-[380px] md:min-w-[450px] rounded-2xl overflow-hidden glass border border-border/50 shadow-glow shrink-0 hover:border-primary/50 transition-all duration-300"
                 >
+                  {/* Browser Header */}
                   <div className="flex items-center gap-2 px-4 py-3 bg-muted/30 border-b border-border/50">
                     <div className="flex gap-1.5">
                       <div className="w-3 h-3 rounded-full bg-destructive/60" />
                       <div className="w-3 h-3 rounded-full bg-yellow-500/60" />
                       <div className="w-3 h-3 rounded-full bg-green-500/60" />
                     </div>
-                    <div className="flex-1 text-center text-xs text-muted-foreground">
-                      mockup-scene-{i}
+                    <div className="flex-1 text-center text-xs text-muted-foreground flex items-center justify-center gap-2">
+                      <screen.icon className="w-3 h-3" />
+                      {screen.title}
                     </div>
                   </div>
 
-                  <div className="aspect-video bg-muted/30 flex items-center justify-center">
+                  {/* Mockup Content Placeholder */}
+                  <div className="aspect-video bg-gradient-to-br from-muted/50 to-muted/20 flex items-center justify-center">
                     <div className="text-center">
-                      <div className="w-20 h-20 rounded-full glass flex items-center justify-center mx-auto mb-4">
-                        <Play className="w-8 h-8 text-primary" />
+                      <div className="w-16 h-16 rounded-2xl glass flex items-center justify-center mx-auto mb-4 border border-primary/30">
+                        <screen.icon className="w-8 h-8 text-primary" />
                       </div>
-                      <p className="text-muted-foreground text-sm">
-                        Mockup Scene {i} (Replace With Link)
+                      <p className="text-muted-foreground text-sm font-medium">
+                        {screen.title}
+                      </p>
+                      <p className="text-muted-foreground/60 text-xs mt-1">
+                        Product Screenshot Placeholder
                       </p>
                     </div>
                   </div>
@@ -180,32 +181,6 @@ const Hero = () => {
               ))}
             </div>
 
-          </div>
-
-          {/* Demo Video */}
-          <div id="demo" className="max-w-4xl mx-auto mt-20 animate-fade-up">
-            <div className="relative rounded-2xl overflow-hidden glass border border-border/50 shadow-glow">
-
-              {/* Browser UI */}
-              <div className="flex items-center gap-2 px-4 py-3 bg-muted/30 border-b border-border/50">
-                <div className="flex gap-1.5">
-                  <div className="w-3 h-3 rounded-full bg-destructive/60" />
-                  <div className="w-3 h-3 rounded-full bg-yellow-500/60" />
-                  <div className="w-3 h-3 rounded-full bg-green-500/60" />
-                </div>
-                <div className="flex-1 text-center text-xs text-muted-foreground">
-                  demo.smartdials.ai
-                </div>
-              </div>
-
-              {/* Video */}
-              <div className="aspect-video bg-black flex items-center justify-center">
-                <video className="w-full h-full" controls>
-                  <source src="/videos/telegram-demo.mp4" type="video/mp4" />
-                </video>
-              </div>
-
-            </div>
           </div>
 
         </div>
