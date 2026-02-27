@@ -28,12 +28,20 @@ https://smart-dails-landpage.vercel.app/
 
 ## 📂 Project Structure
 ```bash
-public/ Static assets
-src/ Main source code
-index.html App entry HTML
-package.json Project dependencies
-tailwind.config Tailwind configuration
-vite.config Vite configuration
+SmartDails-Landpage/
+│
+├── src/            # Main application source code
+│   ├── components/ # Reusable React UI components
+│   ├── pages/      # Application pages
+│   ├── styles/     # Tailwind custom styles
+│   └── assets/     # Images, icons, and other static assets used in code
+├── public/         # Public static files (images, favicon, etc.)
+├── data/           # Optional: sample data files or content (JSON, text)
+│
+├── package.json    # Project dependencies and scripts
+├── vite.config.ts  # Vite build and development configuration
+├── tsconfig.json   # TypeScript configuration
+└── README.md       # Project documentation
 ```
 
 
